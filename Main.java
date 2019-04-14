@@ -27,9 +27,9 @@ class Point implements Comparable<Point>{
 class Classifier {
 
     static String classifyNewPoint(Point[] arr, int n, int k, Point p) {
+
         for (int i = 0; i < n; i++) {
-            arr[i].distance = Math.sqrt((arr[i].x - p.x) * (arr[i].x - p.x)
-                    + (arr[i].y - p.y) * (arr[i].y - p.y));
+            arr[i].distance = Math.sqrt(Math.pow((arr[i].x - p.x), 2) + Math.pow((arr[i].y - p.y), 2));
         }
 
         Arrays.sort(arr);
