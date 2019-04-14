@@ -28,9 +28,9 @@ class Classifier {
 
     static String classifyNewPoint(Point[] arr, int n, int k, Point p) {
 
-        for (int i = 0; i < n; i++) {
+        for (int i = 0; i < n; i++)
             arr[i].distance = Math.sqrt(Math.pow((arr[i].x - p.x), 2) + Math.pow((arr[i].y - p.y), 2));
-        }
+
 
         Arrays.sort(arr);
 
@@ -48,7 +48,31 @@ class Classifier {
 
 public class Main {
 
+    private static int K = 3; // the K in KNN
+
     public static void main(String[] args) {
+        test1();
+        test2();
+    }
+
+    private static void test2() {
+        int n = 7; 
+        Point[] arr = new Point[n];
+
+        arr[0] = new Point(0, 70, 6);
+        arr[1] = new Point(0, 80, 5);
+        arr[2] = new Point(1, 30, 2);
+        arr[3] = new Point(0, 75, 5);
+        arr[4] = new Point(1, 40 ,2);
+        arr[5] = new Point(0, 60, 4);
+        arr[6] = new Point(1, 30, 3);
+
+        Point testPoint = new Point(50, 3);
+
+        System.out.printf("unknown point is %s.\n", Classifier.classifyNewPoint(arr, n, K, testPoint));
+    }
+
+    private static void test1() {
         int n = 17; // Number of data points
         Point[] arr = new Point[n];
 
@@ -70,11 +94,8 @@ public class Main {
         arr[15] = new Point(0, 2, 9);
         arr[16] = new Point(0, 1, 7);
 
-
-        /*Testing Point*/
         Point testPoint = new Point(2.5, 7);
 
-        int k = 3; // the K in KNN
-        System.out.printf("unknown point is %s.\n", Classifier.classifyNewPoint(arr, n, k, testPoint));
+        System.out.printf("unknown point is %s.\n", Classifier.classifyNewPoint(arr, n, K, testPoint));
     }
 }
